@@ -27,6 +27,7 @@ def haversine(lat1, lon1, lat2, lon2):
     except: return 999.0
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
 # --- 2. CSS FORCING (მკაცრი შეზღუდვა) ---
 app.index_string = '''
@@ -189,4 +190,5 @@ def download_report(n, radius):
     return dcc.send_bytes_content(output.getvalue(), "Health_Intel_Report.xlsx")
 
 if __name__ == '__main__':
+
     app.run(debug=False, port=8050)
